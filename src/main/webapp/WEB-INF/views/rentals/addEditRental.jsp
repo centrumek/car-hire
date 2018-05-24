@@ -32,7 +32,7 @@
 	<div class="form-group">
 		<form:label path="rentalDate" class="col-sm-2">Rental date</form:label>
 		<div class="col-sm-6">
-			<form:input path="rentalDate" class="form-control" />
+			<form:input path="rentalDate" type="date" class="form-control" />
 		</div>
 		<div class="col-sm-4">
 			<span class="label label-danger"><form:errors path="rentalDate" /></span>
@@ -40,12 +40,12 @@
 	</div>
 
 	<div class="form-group">
-		<form:label path="days" class="col-sm-2">Days rented</form:label>
+		<form:label path="returnDate" class="col-sm-2">Return date</form:label>
 		<div class="col-sm-6">
-			<form:input path="days"  class="form-control" />
+			<form:input path="returnDate" type="date" class="form-control" />
 		</div>
 		<div class="col-sm-4">
-			<span class="label label-danger"><form:errors path="days" /></span>
+			<span class="label label-danger"><form:errors path="returnDate" /></span>
 		</div>
 	</div>
 

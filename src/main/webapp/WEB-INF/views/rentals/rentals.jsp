@@ -29,10 +29,10 @@
         <thead>
             <tr>
                 <th>#ID</th>
-                <th>Date</th>
+                <th>Rental Date</th>
                 <th>Customer</th>
                 <th>Vehicle</th>
-                <th>Days rented</th>
+                <th>Return Date</th>
                 <th>Price</th>
                 <th>Note</th>
             </tr>
@@ -46,8 +46,8 @@
                 <td><fmt:formatDate pattern="dd/MM/yyyy" value="${rental.rentalDate}" /></td>
                 <td>${rental.customer.lastName}</td>
                 <td>${rental.vehicle.carBrand} ${rental.vehicle.carModel}</td>
-                <td>${rental.days}</td>
-                <td>${rental.days * rental.vehicle.pricePerDay}</td>
+                <td>${rental.returnDate}</td>
+                <td>${(rental.returnDate - rental.rentalDate) * rental.vehicle.pricePerDay}</td>
                 <td>${rental.note}</td>
 
                 <td>
@@ -64,3 +64,4 @@
     </table>
 
 </div>
+

@@ -3,6 +3,7 @@ package com.ranko.rent_a_car.model;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Email;
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,7 +17,7 @@ public class Customer {
 	private Long id;
 
 	@Column(name="firstname")
-	@NotEmpty
+	@NotEmpty()
 	private String firstName;
 
 	@Column(name="lastname")
@@ -25,15 +26,16 @@ public class Customer {
 
 	@Column(name="phone")
 	@NotEmpty
+    @Pattern(regexp = "[0-9]{9}", message = "Phone number must contain exactly 9 digits.")
 	private String phone;
 
 	@Column(name="email")
-	@Email
+	@Email(message = "Incorrect email address.")
+	@NotEmpty
 	private String email;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
 	private Set<Rental> rentals;
-
 
 	public void addRental(Rental rental) {
 		getRentals().add(rental);

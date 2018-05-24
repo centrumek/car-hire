@@ -25,12 +25,20 @@ public class Rental {
 	private Long id;
 
 	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern="dd/MM/yyyy")
-	@Column(name = "rental_date")
 	@FutureOrPresent
+    @DateTimeFormat(pattern="dd-MM-yyyy")
+	@NotNull
+    @Column(name = "rental_date")
 	private Date rentalDate;
 
-	@ManyToOne //(cascade=CascadeType.PERSIST)
+    @Temporal(TemporalType.DATE)
+    @FutureOrPresent
+    @DateTimeFormat(pattern="dd-MM-yyyy")
+    @NotNull
+    @Column(name = "return_date")
+    private Date returnDate;
+
+    @ManyToOne //(cascade=CascadeType.PERSIST)
 	@JoinColumn(name = "customer_id")
 	private Customer customer;
 
@@ -38,10 +46,6 @@ public class Rental {
 	@JoinColumn(name = "vehicle_id")
 	@NotNull
 	private Vehicle vehicle;
-
-	@Min(value = 1)
-	@Max(value = 90)
-	private Integer days;
 
 	@NotNull
 	private String note;
@@ -78,15 +82,15 @@ public class Rental {
 		this.customer = customer;
 	}
 
-	public Integer getDays() {
-		return days;
-	}
+    public Date getReturnDate() {
+        return returnDate;
+    }
 
-	public void setDays(Integer days) {
-		this.days = days;
-	}
+    public void setReturnDate(Date returnDate) {
+        this.returnDate = returnDate;
+    }
 
-	public String getNote() {
+    public String getNote() {
 		return note;
 	}
 
