@@ -57,19 +57,19 @@
 	</definition>
 
 	<!-- Vehicles Pages -->
-	<definition name="vehicles" extends="base-definition">
+	<definition name="cars" extends="base-definition">
 		<put-attribute name="title" value="Vehicles" />
-		<put-attribute name="body" value="/WEB-INF/views/vehicles/vehicles.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/cars/cars.jsp" />
 	</definition>
 
 	<definition name="addEditVehicle" extends="base-definition">
-		<put-attribute name="title" value="Add/Edit vehicle" />
-		<put-attribute name="body" value="/WEB-INF/views/vehicles/addEditVehicle.jsp" />
+		<put-attribute name="title" value="Add/Edit car" />
+		<put-attribute name="body" value="/WEB-INF/views/cars/addEditVehicle.jsp" />
 	</definition>
 
 	<definition name="showVehicle" extends="base-definition">
 		<put-attribute name="title" value="Vehicle details" />
-		<put-attribute name="body" value="/WEB-INF/views/vehicles/showVehicle.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/cars/showVehicle.jsp" />
 	</definition>
 
 	<!-- Hires Pages -->

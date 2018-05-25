@@ -45,7 +45,7 @@ public class Hire {
 	@ManyToOne //(cascade=CascadeType.ALL)
 	@JoinColumn(name = "vehicle_id")
 	@NotNull
-	private Vehicle vehicle;
+	private Car car;
 
 	@NotNull
 	private String note;
@@ -66,12 +66,12 @@ public class Hire {
 		this.hireDate = hireDate;
 	}
 
-	public Vehicle getVehicle() {
-		return vehicle;
+	public Car getCar() {
+		return car;
 	}
 
-	public void setVehicle(Vehicle vehicle) {
-		this.vehicle = vehicle;
+	public void setCar(Car car) {
+		this.car = car;
 	}
 
 	public Customer getCustomer() {
@@ -105,7 +105,7 @@ public class Hire {
 				", hireDate=" + hireDate +
 				", returnDate=" + returnDate +
 				", customer=" + customer +
-				", vehicle=" + vehicle +
+				", car=" + car +
 				", note='" + note + '\'' +
 				'}';
 	}

@@ -6,17 +6,17 @@
 <div class="container">
 
 	<c:choose>
-		<c:when test="${vehicle['new']}">
-			<h1>Add Vehicle</h1>
+		<c:when test="${car['new']}">
+			<h1>Add car</h1>
 		</c:when>
 		<c:otherwise>
-			<h1>Edit Vehicle</h1>
+			<h1>Edit car</h1>
 		</c:otherwise>
 	</c:choose>
 	<br />
 
-<spring:url value="/vehicles" var="vehiclesUrl" />
-<form:form action="${vehiclesUrl}" method="post" modelAttribute="vehicle"  class="form-horizontal">
+<spring:url value="/cars" var="carsUrl" />
+<form:form action="${carsUrl}" method="post" modelAttribute="car"  class="form-horizontal">
 	<form:hidden path="id" />
 
 	<div class="form-group">

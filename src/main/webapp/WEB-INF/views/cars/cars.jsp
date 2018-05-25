@@ -14,10 +14,10 @@
         </div>
     </c:if>
 
-    <h1>All Vehicles</h1>
+    <h1>All cars</h1>
 
-    <spring:url value="/vehicles" var="vehiclesUrl" />
-    <form:form action="${vehiclesUrl}" method="get" modelAttribute="vehicle" class="navbar-form navbar-right" role="search">
+    <spring:url value="/cars" var="carsUrl" />
+    <form:form action="${carsUrl}" method="get" modelAttribute="car" class="navbar-form navbar-right" role="search">
       <div class="form-group">
         <input type="text" name="carModel" value="${carModel}" class="form-control" placeholder="Search by car model"/>
       </div>
@@ -37,24 +37,24 @@
             </tr>
         </thead>
 
-        <c:forEach var="vehicle" items="${vehicles}">
+        <c:forEach var="car" items="${cars}">
             <tr>
                 <td>
-                    ${vehicle.id}
+                    ${car.id}
                 </td>
-                <td>${vehicle.carBrand}</td>
-                <td>${vehicle.carModel}</td>
-                <td>${vehicle.numberOfSeats}</td>
-                <td>${vehicle.color}</td>
-                <td>${vehicle.pricePerDay}</td>
-                <td>${vehicle.note}</td>
+                <td>${car.carBrand}</td>
+                <td>${car.carModel}</td>
+                <td>${car.numberOfSeats}</td>
+                <td>${car.color}</td>
+                <td>${car.pricePerDay}</td>
+                <td>${car.note}</td>
 
                 <td>
-                    <spring:url value="/vehicles/${vehicle.id}" var="vehicleUrl" />
-                    <spring:url value="/vehicles/delete/${vehicle.id}" var="deleteUrl" />
-                    <spring:url value="/vehicles/edit/${vehicle.id}" var="updateUrl" />
+                    <spring:url value="/cars/${car.id}" var="carUrl" />
+                    <spring:url value="/cars/delete/${car.id}" var="deleteUrl" />
+                    <spring:url value="/cars/edit/${car.id}" var="updateUrl" />
 
-                    <button class="btn btn-info" onclick="location.href='${vehicleUrl}'">View</button>
+                    <button class="btn btn-info" onclick="location.href='${carUrl}'">View</button>
                     <button class="btn btn-primary" onclick="location.href='${updateUrl}'">Edit</button>
                     <button class="btn btn-danger" onclick="this.disabled=true;post('${deleteUrl}')">Delete</button></td>
             </tr>
@@ -62,9 +62,9 @@
     </table>
 
 	<div class="form-group">
-	    <spring:url value="/vehicles/new" var="urlAddVehicle" />
+	    <spring:url value="/cars/new" var="urlAddcar" />
 		<div class="col-sm-10">
-			<button class="btn btn-primary" onclick="location.href='${urlAddVehicle}'">Add new vehicle</button>
+			<button class="btn btn-primary" onclick="location.href='${urlAddcar}'">Add new car</button>
 		</div>
 	</div>
 

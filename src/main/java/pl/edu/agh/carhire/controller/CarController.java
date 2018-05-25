@@ -1,6 +1,6 @@
 package pl.edu.agh.carhire.controller;
 
-import pl.edu.agh.carhire.model.Vehicle;
+import pl.edu.agh.carhire.model.Car;
 import pl.edu.agh.carhire.service.VehicleService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,19 +16,19 @@ import java.util.Collection;
 
 @Controller
 @RequestMapping("/vehicles")
-public class VehicleController {
+public class CarController {
 
-	private final Logger logger = LoggerFactory.getLogger(VehicleController.class);
+	private final Logger logger = LoggerFactory.getLogger(CarController.class);
 
 	@Autowired
 	private VehicleService vehicleService;
 
 	@RequestMapping(method=RequestMethod.GET)
 	public String getVehicles(@RequestParam(value="carModel", required=false) String carModel, Model model) {
-		Collection<Vehicle> vehicles = (carModel == null || "".equals(carModel) ? vehicleService.findAll() : vehicleService.findByCarModel(carModel));
-		model.addAttribute("vehicles", vehicles);
+		Collection<Car> cars = (carModel == null || "".equals(carModel) ? vehicleService.findAll() : vehicleService.findByCarModel(carModel));
+		model.addAttribute("cars", cars);
 
-		return "vehicles";
+		return "cars";
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
@@ -36,12 +36,12 @@ public class VehicleController {
 
 		logger.debug("showVehicle() id: {}", id);
 
-		Vehicle vehicle = vehicleService.findOne(id);
-		if (vehicle == null) {
+		Car car = vehicleService.findOne(id);
+		if (car == null) {
 			model.addAttribute("css", "danger");
-			model.addAttribute("msg", "vehicle not found");
+			model.addAttribute("msg", "car not found");
 		}
-		model.addAttribute("vehicle", vehicle);
+		model.addAttribute("car", car);
 
 		return "showVehicle";
 
@@ -54,21 +54,21 @@ public class VehicleController {
 	}
 
 	@RequestMapping(method=RequestMethod.POST)
-	public String saveVehicle(Vehicle vehicle, Model model) {
-			vehicleService.save(vehicle);
+	public String saveVehicle(Car car, Model model) {
+			vehicleService.save(car);
 			return "redirect:/vehicles";
 	}
 
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
 	public String editVehicle(@PathVariable Long id, Model model) {
-		Vehicle vehicle = vehicleService.findOne(id);
-		model.addAttribute("vehicle", vehicle);
+		Car car = vehicleService.findOne(id);
+		model.addAttribute("car", car);
 		return "addEditVehicle";
 	}
 
 	@RequestMapping(value = "/new", method = RequestMethod.GET)
 	public String newVehicle(Model model) {
-		model.addAttribute("vehicle", new Vehicle());
+		model.addAttribute("vehicle", new Car());
 		return "addEditVehicle";
 	}
 }

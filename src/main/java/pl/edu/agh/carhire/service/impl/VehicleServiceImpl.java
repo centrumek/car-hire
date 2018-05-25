@@ -1,7 +1,7 @@
 package pl.edu.agh.carhire.service.impl;
 
-import pl.edu.agh.carhire.model.Vehicle;
-import pl.edu.agh.carhire.repository.VehicleRepository;
+import pl.edu.agh.carhire.model.Car;
+import pl.edu.agh.carhire.repository.CarRepository;
 import pl.edu.agh.carhire.service.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,35 +12,35 @@ import java.util.List;
 public class VehicleServiceImpl implements VehicleService {
 
 	@Autowired
-	private VehicleRepository vehicleRepository;
+	private CarRepository carRepository;
 
 	@Override
-	public Vehicle findOne(Long id) {
-		return vehicleRepository.findById(id).orElse(new Vehicle());
+	public Car findOne(Long id) {
+		return carRepository.findById(id).orElse(new Car());
 	}
 
 	@Override
-	public List<Vehicle> findAll() {
-		return vehicleRepository.findAll();
+	public List<Car> findAll() {
+		return carRepository.findAll();
 	}
 
 	@Override
-	public List<Vehicle> findByCarModel(String carModel) {
-		return vehicleRepository.findByCarModel(carModel);
+	public List<Car> findByCarModel(String carModel) {
+		return carRepository.findByCarModel(carModel);
 	}
 
 	@Override
-	public List<Vehicle> findByIdNotIn(List<Long> vehicleIDs) {
-		return vehicleRepository.findByIdNotIn(vehicleIDs);
+	public List<Car> findByIdNotIn(List<Long> vehicleIDs) {
+		return carRepository.findByIdNotIn(vehicleIDs);
 	}
 
 	@Override
-	public Vehicle save(Vehicle vehicle) {
-		return vehicleRepository.save(vehicle);
+	public Car save(Car car) {
+		return carRepository.save(car);
 	}
 
 	@Override
 	public void remove(Long id) throws IllegalArgumentException {
-		vehicleRepository.deleteById(id);
+		carRepository.deleteById(id);
 	}
 }

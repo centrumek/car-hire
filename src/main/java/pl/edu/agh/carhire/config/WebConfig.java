@@ -78,7 +78,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     /**
      * Register formatters or converters
      * (in this case converter from String vehicle.id returned from view addEditHires
-     * to object Vehicle, so Hibernate can persist hire.vehicle to db)
+     * to object Car, so Hibernate can persist hire.vehicle to db)
      */
     @Override
     public void addFormatters(FormatterRegistry registry) {

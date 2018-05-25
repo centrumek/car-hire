@@ -1,16 +1,16 @@
 package pl.edu.agh.carhire.service;
 
-import pl.edu.agh.carhire.model.Vehicle;
+import pl.edu.agh.carhire.model.Car;
 
 import java.util.List;
 
 
 public interface VehicleService {
 
-	Vehicle findOne(Long id);
-	List<Vehicle> findAll();
-	List<Vehicle> findByCarModel(String carModel);
-	List<Vehicle> findByIdNotIn(List<Long> vehicleIDs);
-	Vehicle save(Vehicle vehicle);
+	Car findOne(Long id);
+	List<Car> findAll();
+	List<Car> findByCarModel(String carModel);
+	List<Car> findByIdNotIn(List<Long> vehicleIDs);
+	Car save(Car car);
 	void remove(Long id) throws IllegalArgumentException;
 }

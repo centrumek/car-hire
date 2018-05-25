@@ -1,8 +1,8 @@
 package pl.edu.agh.carhire.controller;
 
+import pl.edu.agh.carhire.model.Car;
 import pl.edu.agh.carhire.model.Customer;
 import pl.edu.agh.carhire.model.Hire;
-import pl.edu.agh.carhire.model.Vehicle;
 import pl.edu.agh.carhire.service.CustomerService;
 import pl.edu.agh.carhire.service.HireService;
 import pl.edu.agh.carhire.service.VehicleService;
@@ -79,16 +79,16 @@ public class HireController {
 		List<Hire> hiresAtSelectedTime = hireService.findByHireDateGreaterThanEqualAndReturnDateLessThanEqual(hireDate,returnDate);
 		List<Long> notAvaliableVehicaleIDs = new ArrayList<>();
 		for (int i = 0; i < hiresAtSelectedTime.size(); i++) {
-			notAvaliableVehicaleIDs.add(hiresAtSelectedTime.get(i).getVehicle().getId());
+			notAvaliableVehicaleIDs.add(hiresAtSelectedTime.get(i).getCar().getId());
 		}
 		if (notAvaliableVehicaleIDs.isEmpty()) {
             model.addAttribute("vehicles", vehicleService.findAll());
         } else {
-		    List<Vehicle> vehicleList = vehicleService.findByIdNotIn(notAvaliableVehicaleIDs);
-		    if (vehicleList.isEmpty()) {
+		    List<Car> carList = vehicleService.findByIdNotIn(notAvaliableVehicaleIDs);
+		    if (carList.isEmpty()) {
                 return "404";
             }
-            model.addAttribute("vehicles", vehicleList);
+            model.addAttribute("vehicles", carList);
         }
 
 		return "addEditHire";
@@ -96,7 +96,7 @@ public class HireController {
 
 	@RequestMapping(method = RequestMethod.POST)
 	public String saveNewHire(Customer customer, @Valid Hire hire, BindingResult result, ModelMap model, final RedirectAttributes redirectAttributes) {
-        System.out.println("\n\n"+ hire.getVehicle().getId());
+        System.out.println("\n\n"+ hire.getCar().getId());
 		if (result.hasErrors()) {
             System.out.println(hire);
 			System.out.println("sdpsao: "  + result.getAllErrors().toString());

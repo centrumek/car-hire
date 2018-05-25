@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 
 @Entity
 @Table(name="vehicles")
-public class Vehicle {
+public class Car {
 
 	@Id
 	@GeneratedValue
@@ -92,7 +92,7 @@ public class Vehicle {
 
 	@Override
 	public String toString() {
-		return "Vehicle{" +
+		return "Car{" +
 				"carBrand='" + carBrand + '\'' +
 				", carModel='" + carModel + '\'' +
 				", color='" + color + '\'' +
