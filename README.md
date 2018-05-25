@@ -1,30 +1,38 @@
-Rent-a-car Spring MVC application
-=================================
+Rent-a-car
+==========
 
-The system will assume automation of the car rental by introducing an IT system that will improve the quality and speed of customer service.
+## 1.Wstep
+Poniższy dokument zawiera ogólny opis projektu oraz scharakteryzowane wymagania systemowe ze względu na jego przeznaczenie i sposób użycia, a także określenie najważniejszych założeń jego realizacji. Wszelkie decyzje implementacyjne nie są tu podejmowane i opisane zostaną w następnych dokumentach.
 
-Functional requirements
------------------------
-
-1. Mandatory functions:
-	- Customer account service (employee, customer)
-	- Client search (employee)
-	- Car rental (employee)
-	- Information about the fleet status and rented cars (employee, customer)
-	- Car booking service (employee, customer)
-2. Functionalities with a high priority:
-	- Vehicle service (employee, owner)
-3. Additional functions:
-	- Employee account support (administrator)
-4. Functionalities for consideration in the future:
-	- Receiving event reminders (employee)
+## 2.Opis problemu
+**Problem:** Dokumentacja papierowa i pomyłki z nią związane.
+**Rozwiązanie:** Opracowanie systemu informatycznego z baza danych pozwoli zredukować dokumentacje papierowa do minimum. Umożliwi także sprawdzanie na bieżąco wprowadzanych danych
+ 
+**Problem:** Utrudniona obsługi klienta, konieczność wielokrotnego wprowadzania tych samych danych
+**Rozwiązanie:** Dobrze zaprojektowany system pozwala na zautomatyzowanie uzupełniania części danych, a forma aplikacji webowej przeniesie, przynajmniej część, tego procesu na klienta.
+ 
+**Problem:** Utrudniona ewidencja i obsługa pojazdów.
+**Rozwiązanie:** Jednolita baza danych pozwoli wyeliminować problem podwójnych wypożyczeń, a moduł kalendarza przypomini o zbliżajacych się wydarzeniach (np. badania techniczne pojazdu)
 
 
-Used frameworks
----------------
 
-This project is Spring MVC + Bootstrap + Tiles application with pure Java configuration
+## 3.Wymagania funkcjonalne
 
+1. Funkcjonalności obowiązkowe:
+	- Obsługa konta klienta (pracownik, klient) 
+	- Wyszukiwanie klienta (pracownik) 
+	- Wypożyczenie samochodu (pracownik) 
+	- Informacje o stanie floty oraz wypożyczonych samochodach 	(pracownik, klient) 
+	- Obsługa rezerwacji samochodu (pracownik, klient)
+2. Funkcjonalności z wysokim priorytetem:
+	- Obsługa pojazdów (pracownik,właściciel)
+3. Funkcjonalności dodatkowe:
+	- Obsługa konta pracownika (administrator)
+4. Funkcjonalności do rozpatrzenia w przyszłości:
+	- Odbieranie przypomnień o wydarzeniach (pracownik)
+
+
+## 4.Użyte technologie
 - Spring Boot 2.0.1
 - Spring MVC 4.3.3
 - Spring Data JPA 2.0.6
@@ -33,4 +41,4 @@ This project is Spring MVC + Bootstrap + Tiles application with pure Java config
 - JSTL 1.2
 - Log4j 1.2.12
 
-Full documentation can be found [here](https://docs.google.com/document/d/1_HC6NWEPBg7oqwOoQvHzOHhY52nlhk_0lzmbz-PGCJA/edit?usp=sharing) 
+Pełna dokumentacja moze być znaleźiona [tutaj](https://docs.google.com/document/d/1_HC6NWEPBg7oqwOoQvHzOHhY52nlhk_0lzmbz-PGCJA/edit?usp=sharing) 
