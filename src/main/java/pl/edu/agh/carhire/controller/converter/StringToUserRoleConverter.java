@@ -1,4 +1,4 @@
-package pl.edu.agh.carhire.web.converter;
+package pl.edu.agh.carhire.controller.converter;
 
 import pl.edu.agh.carhire.model.Role;
 import pl.edu.agh.carhire.service.RoleService;

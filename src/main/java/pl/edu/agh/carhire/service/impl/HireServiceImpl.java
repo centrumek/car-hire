@@ -1,8 +1,8 @@
 package pl.edu.agh.carhire.service.impl;
 
-import pl.edu.agh.carhire.model.Rental;
-import pl.edu.agh.carhire.repository.RentalRepository;
-import pl.edu.agh.carhire.service.RentalService;
+import pl.edu.agh.carhire.model.Hire;
+import pl.edu.agh.carhire.repository.HireRepository;
+import pl.edu.agh.carhire.service.HireService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,38 +10,38 @@ import java.util.Date;
 import java.util.List;
 
 @Service
-public class RentalServiceImpl implements RentalService {
+public class HireServiceImpl implements HireService {
 
 	@Autowired
-	private RentalRepository rentalRepository;
+	private HireRepository hireRepository;
 
 	@Override
-	public Rental findOne(Long id) {
-		return rentalRepository.findById(id).get();
+	public Hire findOne(Long id) {
+		return hireRepository.findById(id).get();
 	}
 
 	@Override
-	public List<Rental> findAll() {
-		return rentalRepository.findAll();
+	public List<Hire> findAll() {
+		return hireRepository.findAll();
 	}
 
 	@Override
-	public List<Rental> findByRentalDate(Date rentalDate) {
-		return rentalRepository.findByRentalDate(rentalDate);
+	public List<Hire> findByHireDate(Date hireDate) {
+		return hireRepository.findByHireDate(hireDate);
 	}
 
 	@Override
-	public List<Rental> findByRentalDateGreaterThanEqualAndReturnDateLessThanEqual(Date rentalDate, Date returnDate) {
-		return rentalRepository.findByRentalDateGreaterThanEqualAndReturnDateLessThanEqual(rentalDate,returnDate);
+	public List<Hire> findByHireDateGreaterThanEqualAndReturnDateLessThanEqual(Date hireDate, Date returnDate) {
+		return hireRepository.findByHireDateGreaterThanEqualAndReturnDateLessThanEqual(hireDate,returnDate);
 	}
 
 	@Override
-	public Rental save(Rental rental) {
-		return rentalRepository.saveAndFlush(rental);
+	public Hire save(Hire hire) {
+		return hireRepository.saveAndFlush(hire);
 	}
 
 	@Override
 	public void remove(Long id) throws IllegalArgumentException {
-		rentalRepository.deleteById(id);
+		hireRepository.deleteById(id);
 	}
 }

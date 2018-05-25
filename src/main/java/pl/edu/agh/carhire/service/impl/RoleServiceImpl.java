@@ -1,8 +1,8 @@
-package com.ranko.rent_a_car.service.impl;
+package pl.edu.agh.carhire.service.impl;
 
-import com.ranko.rent_a_car.model.Role;
-import com.ranko.rent_a_car.repository.RoleRepository;
-import com.ranko.rent_a_car.service.RoleService;
+import pl.edu.agh.carhire.model.Role;
+import pl.edu.agh.carhire.repository.RoleRepository;
+import pl.edu.agh.carhire.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

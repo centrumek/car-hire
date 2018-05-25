@@ -1,8 +1,8 @@
-package com.ranko.rent_a_car.service.impl;
+package pl.edu.agh.carhire.service.impl;
 
-import com.ranko.rent_a_car.model.Customer;
-import com.ranko.rent_a_car.repository.CustomerRepository;
-import com.ranko.rent_a_car.service.CustomerService;
+import pl.edu.agh.carhire.model.Customer;
+import pl.edu.agh.carhire.repository.CustomerRepository;
+import pl.edu.agh.carhire.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -54,12 +54,12 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	@Transactional(readOnly = true)
-	public Customer findOneWithRentals(Long id) {
-		return customerRepository.findByIdWithRentals(id);
+	public Customer findOneWithHires(Long id) {
+		return customerRepository.findByIdWithHires(id);
 	}
 
 	@Override
 	public Collection<Customer> findByLastNameWithRentals(String lastName) {
-		return customerRepository.findByLastNameWithRentals(lastName);
+		return customerRepository.findByLastNameWithHires(lastName);
 	}
 }

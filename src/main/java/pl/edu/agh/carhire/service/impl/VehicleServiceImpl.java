@@ -1,12 +1,11 @@
-package com.ranko.rent_a_car.service.impl;
+package pl.edu.agh.carhire.service.impl;
 
-import com.ranko.rent_a_car.model.Vehicle;
-import com.ranko.rent_a_car.repository.VehicleRepository;
-import com.ranko.rent_a_car.service.VehicleService;
+import pl.edu.agh.carhire.model.Vehicle;
+import pl.edu.agh.carhire.repository.VehicleRepository;
+import pl.edu.agh.carhire.service.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
 import java.util.List;
 
 @Service
@@ -17,7 +16,7 @@ public class VehicleServiceImpl implements VehicleService {
 
 	@Override
 	public Vehicle findOne(Long id) {
-		return vehicleRepository.findById(id).get();
+		return vehicleRepository.findById(id).orElse(new Vehicle());
 	}
 
 	@Override

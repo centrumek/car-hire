@@ -1,16 +1,14 @@
-package com.ranko.rent_a_car.service.impl;
+package pl.edu.agh.carhire.service.impl;
 
-import com.ranko.rent_a_car.model.Role;
-import com.ranko.rent_a_car.model.User;
-import com.ranko.rent_a_car.repository.RoleRepository;
-import com.ranko.rent_a_car.repository.UserRepository;
-import com.ranko.rent_a_car.service.UserService;
+import pl.edu.agh.carhire.model.User;
+import pl.edu.agh.carhire.repository.RoleRepository;
+import pl.edu.agh.carhire.repository.UserRepository;
+import pl.edu.agh.carhire.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.HashSet;
 import java.util.List;
 
 

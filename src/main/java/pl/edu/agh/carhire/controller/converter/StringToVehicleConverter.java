@@ -1,4 +1,4 @@
-package pl.edu.agh.carhire.web.converter;
+package pl.edu.agh.carhire.controller.converter;
 
 import pl.edu.agh.carhire.model.Vehicle;
 import pl.edu.agh.carhire.service.VehicleService;
@@ -19,6 +19,7 @@ public class StringToVehicleConverter implements Converter<String, Vehicle> {
 
 	@Override
 	public Vehicle convert(String id) {
+		System.out.println("confd "+ id);
 		return vehicleService.findOne(Long.parseLong(id));
 	}
 }
