@@ -43,7 +43,7 @@ public class Hire {
 	private Customer customer;
 
 	@ManyToOne //(cascade=CascadeType.ALL)
-	@JoinColumn(name = "vehicle_id")
+	@JoinColumn(name = "car_id")
 	@NotNull
 	private Car car;
 

@@ -2,14 +2,14 @@ package pl.edu.agh.carhire.service.impl;
 
 import pl.edu.agh.carhire.model.Car;
 import pl.edu.agh.carhire.repository.CarRepository;
-import pl.edu.agh.carhire.service.VehicleService;
+import pl.edu.agh.carhire.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class VehicleServiceImpl implements VehicleService {
+public class CarServiceImpl implements CarService {
 
 	@Autowired
 	private CarRepository carRepository;
@@ -30,8 +30,8 @@ public class VehicleServiceImpl implements VehicleService {
 	}
 
 	@Override
-	public List<Car> findByIdNotIn(List<Long> vehicleIDs) {
-		return carRepository.findByIdNotIn(vehicleIDs);
+	public List<Car> findByIdNotIn(List<Long> carIDs) {
+		return carRepository.findByIdNotIn(carIDs);
 	}
 
 	@Override

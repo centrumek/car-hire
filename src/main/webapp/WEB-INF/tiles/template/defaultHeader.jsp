@@ -10,7 +10,7 @@
 <spring:url value="/" var="urlHome" />
 <spring:url value="/hires?hireDate=${fmtNow}" var="urlHires"/>
 <spring:url value="/customers" var="urlCustomers" />
-<spring:url value="/vehicles" var="urlVehicles" />
+<spring:url value="/cars" var="urlCars" />
 <spring:url value="/admin/users" var="urlUsers" />
 <spring:url value="/admin/roles" var="urlRoles" />
 
@@ -32,7 +32,7 @@
 				<li class="active"><a href="${urlHome}">Home</a></li>
 				<li><a href="${urlCustomers}">Customers</a></li>
 				<li><a href="${urlHires}">Hires</a></li>
-				<li><a href="${urlVehicles}">Vehicles</a></li>
+				<li><a href="${urlCars}">Cars</a></li>
 				<security:authorize access="hasRole('ADMIN')">
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" >Administration <span class="caret"></span></a>

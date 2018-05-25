@@ -32,8 +32,8 @@
     </div>
 
     <div class="row">
-        <label class="col-sm-2">Vehicle</label>
-        <div class="col-sm-10">${hire.vehicle.carBrand} ${hire.vehicle.carModel}</div>
+        <label class="col-sm-2">Car</label>
+        <div class="col-sm-10">${hire.car.carBrand} ${hire.car.carModel}</div>
     </div>
 
     <div class="row">

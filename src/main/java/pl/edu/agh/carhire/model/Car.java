@@ -8,7 +8,7 @@ import javax.persistence.Table;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name="vehicles")
+@Table(name="cars")
 public class Car {
 
 	@Id

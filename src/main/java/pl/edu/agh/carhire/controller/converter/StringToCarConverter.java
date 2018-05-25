@@ -1,7 +1,7 @@
 package pl.edu.agh.carhire.controller.converter;
 
 import pl.edu.agh.carhire.model.Car;
-import pl.edu.agh.carhire.service.VehicleService;
+import pl.edu.agh.carhire.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
@@ -12,14 +12,13 @@ import org.springframework.stereotype.Component;
  * 
  */
 @Component
-public class StringToVehicleConverter implements Converter<String, Car> {
+public class StringToCarConverter implements Converter<String, Car> {
 
 	@Autowired
-	private VehicleService vehicleService;
+	private CarService carService;
 
 	@Override
 	public Car convert(String id) {
-		System.out.println("confd "+ id);
-		return vehicleService.findOne(Long.parseLong(id));
+		return carService.findOne(Long.parseLong(id));
 	}
 }

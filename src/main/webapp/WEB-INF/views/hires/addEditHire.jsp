@@ -30,12 +30,12 @@
     </div>
 
 	<div class="form-group">
-		<form:label path="vehicle" class="col-sm-2">Vehicle</form:label>
+		<form:label path="car" class="col-sm-2">Car</form:label>
 		<div class="col-sm-6">
-			<form:select path="vehicle" class="form-control">
-				<form:options items="${vehicles}" itemValue="id" itemLabel="carModel" />
+			<form:select path="car" class="form-control">
+				<form:options items="${cars}" itemValue="id" itemLabel="carModel" />
 			</form:select>
-			<form:errors path="vehicle" class="control-label" />
+			<form:errors path="car" class="control-label" />
 		</div>
 	</div>
 

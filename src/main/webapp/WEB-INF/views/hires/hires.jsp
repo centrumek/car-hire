@@ -31,7 +31,7 @@
                 <th>#ID</th>
                 <th>Hire Date</th>
                 <th>Customer</th>
-                <th>Vehicle</th>
+                <th>Car</th>
                 <th>Return Date</th>
                 <th>Price</th>
                 <th>Note</th>
@@ -45,9 +45,9 @@
                 </td>
                 <td><fmt:formatDate pattern="dd/MM/yyyy" value="${hire.hireDate}" /></td>
                 <td>${hire.customer.lastName}</td>
-                <td>${hire.vehicle.carBrand} ${hire.vehicle.carModel}</td>
+                <td>${hire.car.carBrand} ${hire.car.carModel}</td>
                 <td>${hire.returnDate}</td>
-                <td>${(hire.returnDate - hire.hireDate) * hire.vehicle.pricePerDay}</td>
+                <td>${(hire.returnDate - hire.hireDate) * hire.car.pricePerDay}</td>
                 <td>${hire.note}</td>
 
                 <td>

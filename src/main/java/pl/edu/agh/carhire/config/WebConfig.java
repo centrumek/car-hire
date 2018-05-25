@@ -1,7 +1,7 @@
 package pl.edu.agh.carhire.config;
 
 import pl.edu.agh.carhire.controller.converter.StringToUserRoleConverter;
-import pl.edu.agh.carhire.controller.converter.StringToVehicleConverter;
+import pl.edu.agh.carhire.controller.converter.StringToCarConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
@@ -25,7 +25,7 @@ import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 public class WebConfig extends WebMvcConfigurerAdapter {
 
     @Autowired
-    StringToVehicleConverter stringToVehicleConverter;
+    StringToCarConverter stringToCarConverter;
 
     @Autowired
     StringToUserRoleConverter stringToUserRoleConverter;
@@ -77,13 +77,13 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 
     /**
      * Register formatters or converters
-     * (in this case converter from String vehicle.id returned from view addEditHires
-     * to object Car, so Hibernate can persist hire.vehicle to db)
+     * (in this case converter from String car.id returned from view addEditHires
+     * to object Car, so Hibernate can persist hire.car to db)
      */
     @Override
     public void addFormatters(FormatterRegistry registry) {
         // Add formatters and/or converters
-		registry.addConverter(stringToVehicleConverter);
+		registry.addConverter(stringToCarConverter);
         registry.addConverter(stringToUserRoleConverter);
     }
 

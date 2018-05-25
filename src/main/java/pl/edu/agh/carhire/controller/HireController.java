@@ -5,7 +5,7 @@ import pl.edu.agh.carhire.model.Customer;
 import pl.edu.agh.carhire.model.Hire;
 import pl.edu.agh.carhire.service.CustomerService;
 import pl.edu.agh.carhire.service.HireService;
-import pl.edu.agh.carhire.service.VehicleService;
+import pl.edu.agh.carhire.service.CarService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +41,7 @@ public class HireController {
 	private CustomerService customerService;
 
 	@Autowired
-	private VehicleService vehicleService;
+	private CarService carService;
 
 	@ModelAttribute("customer")
 	public Customer findCustomer(@PathVariable("customerId") Long id) {
@@ -53,8 +53,8 @@ public class HireController {
 		binder.setDisallowedFields("id");
 	}
 
-	@InitBinder("vehicle")
-	public void initVehicleBinder(WebDataBinder binder) {
+	@InitBinder("car")
+	public void initCarBinder(WebDataBinder binder) {
 		binder.setDisallowedFields("id");
 	}
 
@@ -82,13 +82,13 @@ public class HireController {
 			notAvaliableVehicaleIDs.add(hiresAtSelectedTime.get(i).getCar().getId());
 		}
 		if (notAvaliableVehicaleIDs.isEmpty()) {
-            model.addAttribute("vehicles", vehicleService.findAll());
+            model.addAttribute("cars", carService.findAll());
         } else {
-		    List<Car> carList = vehicleService.findByIdNotIn(notAvaliableVehicaleIDs);
+		    List<Car> carList = carService.findByIdNotIn(notAvaliableVehicaleIDs);
 		    if (carList.isEmpty()) {
                 return "404";
             }
-            model.addAttribute("vehicles", carList);
+            model.addAttribute("cars", carList);
         }
 
 		return "addEditHire";
@@ -115,7 +115,7 @@ public class HireController {
 	public String editHire(@PathVariable Long id, Model model) {
 		Hire hire = hireService.findOne(id);
 		model.addAttribute("hire", hire);
-		model.addAttribute("vehicles", vehicleService.findAll());
+		model.addAttribute("cars", carService.findAll());
 		return "addEditHire";
 	}
 

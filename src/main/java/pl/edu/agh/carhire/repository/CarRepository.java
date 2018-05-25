@@ -10,6 +10,6 @@ import java.util.List;
 public interface CarRepository extends JpaRepository<Car, Long> {
 
 	List<Car> findByCarModel(String carModel);
-	List<Car> findByIdNotIn(List<Long> vehicleIDs);
+	List<Car> findByIdNotIn(List<Long> carIDs);
 
 }
