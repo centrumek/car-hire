@@ -11,8 +11,7 @@ import java.util.List;
 @Repository
 public interface VehicleRepository extends JpaRepository<Vehicle, Long> {
 
-	List<Vehicle> findByCarModel(String carModel) throws DataAccessException;
-
-//	Vehicle findById(Long id) throws DataAccessException;
+	List<Vehicle> findByCarModel(String carModel);
+	List<Vehicle> findByIdNotIn(List<Vehicle> vehicles);
 
 }
