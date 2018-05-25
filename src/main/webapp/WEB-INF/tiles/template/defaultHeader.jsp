@@ -8,7 +8,7 @@
 <fmt:formatDate value="${now}" type="date" pattern="dd/MM/yyyy" var="fmtNow" />
 
 <spring:url value="/" var="urlHome" />
-<spring:url value="/rentals?rentalDate=${fmtNow}" var="urlRentals" />
+<spring:url value="/hires?hireDate=${fmtNow}" var="urlHires"/>
 <spring:url value="/customers" var="urlCustomers" />
 <spring:url value="/vehicles" var="urlVehicles" />
 <spring:url value="/admin/users" var="urlUsers" />
@@ -23,7 +23,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">Rent-a-car</a>
+			<a class="navbar-brand" href="#">Car-hire-project</a>
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
@@ -31,7 +31,7 @@
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="${urlHome}">Home</a></li>
 				<li><a href="${urlCustomers}">Customers</a></li>
-				<li><a href="${urlRentals}">Rentals</a></li>
+				<li><a href="${urlHires}">Hires</a></li>
 				<li><a href="${urlVehicles}">Vehicles</a></li>
 				<security:authorize access="hasRole('ADMIN')">
 					<li class="dropdown">

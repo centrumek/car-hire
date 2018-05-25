@@ -28,6 +28,12 @@
 		<put-attribute name="body" value="/WEB-INF/views/403.jsp" />
 	</definition>
 
+	<!-- 404 Page -->
+	<definition name="404" extends="base-definition">
+		<put-attribute name="title" value="Not found" />
+		<put-attribute name="body" value="/WEB-INF/views/404.jsp" />
+	</definition>
+
 	<!-- Home Page -->
 	<definition name="home" extends="base-definition">
 		<put-attribute name="title" value="Welcome" />
@@ -66,20 +72,20 @@
 		<put-attribute name="body" value="/WEB-INF/views/vehicles/showVehicle.jsp" />
 	</definition>
 
-	<!-- Rentals Pages -->
-	<definition name="rentals" extends="base-definition">
-		<put-attribute name="title" value="Rentals" />
-		<put-attribute name="body" value="/WEB-INF/views/rentals/rentals.jsp" />
+	<!-- Hires Pages -->
+	<definition name="hires" extends="base-definition">
+		<put-attribute name="title" value="Hires" />
+		<put-attribute name="body" value="/WEB-INF/views/hires/hires.jsp" />
 	</definition>
 
-	<definition name="addEditRental" extends="base-definition">
-		<put-attribute name="title" value="Add/Edit rental" />
-		<put-attribute name="body" value="/WEB-INF/views/rentals/addEditRental.jsp" />
+	<definition name="addEditHire" extends="base-definition">
+		<put-attribute name="title" value="Add/Edit hire" />
+		<put-attribute name="body" value="/WEB-INF/views/hires/addEditHire.jsp" />
 	</definition>
 
-	<definition name="showRental" extends="base-definition">
-		<put-attribute name="title" value="Rental details" />
-		<put-attribute name="body" value="/WEB-INF/views/rentals/showRental.jsp" />
+	<definition name="showHire" extends="base-definition">
+		<put-attribute name="title" value="Hire details" />
+		<put-attribute name="body" value="/WEB-INF/views/hires/showHire.jsp" />
 	</definition>
 
 	<!-- Users Pages -->
@@ -114,7 +120,7 @@
 		<put-attribute name="body" value="/WEB-INF/views/roles/showRole.jsp" />
 	</definition>
 
-	<!-- Roles Pages -->
+	<!-- Password Pages -->
 	<definition name="changePassword" extends="base-definition">
 		<put-attribute name="title" value="Change user password" />
 		<put-attribute name="body" value="/WEB-INF/views/users/changePassword.jsp" />

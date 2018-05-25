@@ -16,7 +16,7 @@
 
 	<div class="row">
 		<div class="col-md-12">
-			<h1>Welcome to Rent-a-car</h1>
+			<h1>Welcome to car-hire-project</h1>
 			<!--<form:form action="/login" method="GET">
 				<p>Please login to use application</p>
 				<button type="submit" class="btn btn-primary">

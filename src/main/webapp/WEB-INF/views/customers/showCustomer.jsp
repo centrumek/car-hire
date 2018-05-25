@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <div class="container">
 
@@ -45,43 +46,53 @@
 
     <spring:url value="/customers/edit/${customer.id}" var="updateCustomerUrl" />
     <button class="btn btn-primary" onclick="location.href='${updateCustomerUrl}'">Edit customer</button>
-    
-    <spring:url value="/customers/{customerId}/rentals/new" var="urlAddRental">
+
+    <spring:url value="/customers/{customerId}/hires/new" var="urlAddHire">
         <spring:param name="customerId" value="${customer.id}"/>
     </spring:url>
-    <button class="btn btn-primary" onclick="location.href='${urlAddRental}'">Add new rental</button>
+
+    <button class="btn btn-primary" onclick="location.href='${urlAddHire}' + getHireAndReturnDate()">Add new hire</button>
+
+    <input type="date" id="hireDate"/>
+    <input type="date" id="returnDate"/>
+
+    <script type="text/javascript">
+        function getHireAndReturnDate() {
+            var hireDate = document.getElementById("hireDate").value;
+            var returnDate = document.getElementById("returnDate").value;
+            return "?hireDate="+hireDate+"&returnDate="+returnDate;
+        }
+    </script>
 
     <br/>
-    <br/>
-    <br/>
-    <h2>Rentals</h2>
+    <h2>Hires</h2>
 
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>Date</th>
+                <th>Hire Date</th>
                 <th>Vehicle</th>
-                <th>Days rented</th>
+                <th>Return Date</th>
                 <th>Price</th>
                 <th>Total</th>
                 <th>Note</th>
             </tr>
         </thead>
 
-        <c:forEach var="rental" items="${customer.rentals}">
+        <c:forEach var="hire" items="${customer.hires}">
             <tr>
-                <td><fmt:formatDate pattern="dd/MM/yyyy" value="${rental.rentalDate}" /></td>
-                <td>${rental.vehicle.carBrand} ${rental.vehicle.carModel}</td>
-                <td>${rental.days}</td>
-                <td>${rental.vehicle.pricePerDay}</td>
-                <td>${rental.days * rental.vehicle.pricePerDay}</td>
-                <td>${rental.note}</td>
+                <td><fmt:formatDate pattern="dd/MM/yyyy" value="${hire.hireDate}" /></td>
+                <td>${hire.vehicle.carBrand} ${hire.vehicle.carModel}</td>
+                <td>${hire.returnDate}</td>
+                <td>${hire.vehicle.pricePerDay}</td>
+                <%--<td>${(hire.returnDate - hire.hireDate) * hire.vehicle.pricePerDay}</td>--%>
+                <td>${hire.note}</td>
                 <td>
-                    <spring:url value="/customers/${customer.id}/rentals/${rental.id}" var="rentalUrl" />
-                    <spring:url value="/customers/${customer.id}/rentals/edit/${rental.id}" var="updateUrl" />
-                    <spring:url value="/customers/${customer.id}/rentals/delete/${rental.id}" var="deleteUrl" />
+                    <spring:url value="/customers/${customer.id}/hires/${hire.id}" var="hireUrl"/>
+                    <spring:url value="/customers/${customer.id}/hires/edit/${hire.id}" var="updateUrl" />
+                    <spring:url value="/customers/${customer.id}/hires/delete/${hire.id}" var="deleteUrl" />
 
-                    <button class="btn btn-info" onclick="location.href='${rentalUrl}'">View</button>
+                    <button class="btn btn-info" onclick="location.href='${hireUrl}'">View</button>
                     <button class="btn btn-primary" onclick="location.href='${updateUrl}'">Edit</button>
                     <button class="btn btn-danger" onclick="location.href='${deleteUrl}'">Delete</button>
                 </td>
