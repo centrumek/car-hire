@@ -35,7 +35,7 @@
 				<li><a href="${urlCars}">Cars</a></li>
 				<security:authorize access="hasRole('ADMIN')">
 					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" >Administration <span class="caret"></span></a>
+						<a href="${urlHome}" class="dropdown-toggle" data-toggle="dropdown" >Administration <span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a href="${urlUsers}">Users</a></li>
 							<li><a href="${urlRoles}">Roles</a></li>

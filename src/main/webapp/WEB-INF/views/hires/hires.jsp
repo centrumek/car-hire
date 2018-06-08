@@ -47,7 +47,7 @@
                 <td>${hire.customer.lastName}</td>
                 <td>${hire.car.carBrand} ${hire.car.carModel}</td>
                 <td>${hire.returnDate}</td>
-                <td>${(hire.returnDate - hire.hireDate) * hire.car.pricePerDay}</td>
+                <td>${4 * hire.car.pricePerDay}</td>
                 <td>${hire.note}</td>
 
                 <td>

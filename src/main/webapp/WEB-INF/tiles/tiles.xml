@@ -56,20 +56,20 @@
 		<put-attribute name="body" value="/WEB-INF/views/customers/showCustomer.jsp" />
 	</definition>
 
-	<!-- Vehicles Pages -->
+	<!-- Cars Pages -->
 	<definition name="cars" extends="base-definition">
-		<put-attribute name="title" value="Vehicles" />
+		<put-attribute name="title" value="Cars" />
 		<put-attribute name="body" value="/WEB-INF/views/cars/cars.jsp" />
 	</definition>
 
-	<definition name="addEditVehicle" extends="base-definition">
+	<definition name="addEditCar" extends="base-definition">
 		<put-attribute name="title" value="Add/Edit car" />
-		<put-attribute name="body" value="/WEB-INF/views/cars/addEditVehicle.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/cars/addEditCar.jsp" />
 	</definition>
 
-	<definition name="showVehicle" extends="base-definition">
-		<put-attribute name="title" value="Vehicle details" />
-		<put-attribute name="body" value="/WEB-INF/views/cars/showVehicle.jsp" />
+	<definition name="showCar" extends="base-definition">
+		<put-attribute name="title" value="Car details" />
+		<put-attribute name="body" value="/WEB-INF/views/cars/showCar.jsp" />
 	</definition>
 
 	<!-- Hires Pages -->
