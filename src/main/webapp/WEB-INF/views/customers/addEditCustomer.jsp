@@ -11,7 +11,6 @@
 		<form:label path="firstName" cssClass="col-sm-2">First Name</form:label>
 		<div class="col-sm-6">
 			<form:input path="firstName" cssClass="form-control" />
-			<!-- da ispise gresku kod validacije -->
 			<span class="label label-danger"><form:errors path="firstName" /></span>
 		</div>
 	</div>

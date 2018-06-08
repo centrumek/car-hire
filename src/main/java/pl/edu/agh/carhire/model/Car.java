@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.*;
 import java.math.BigDecimal;
 
 @Entity
@@ -16,18 +17,25 @@ public class Car {
 	@Column(name="id")
 	private Long id;
 
+	@NotEmpty()
 	private String carBrand;
 
+	@NotEmpty()
 	private String carModel;
 
+	@Min(1)
+	@Max(20)
+	@NotNull
 	private Integer numberOfSeats;
 
+	@NotEmpty()
 	private String color;
 
+	@NotEmpty()
 	private String note;
 
+	@Digits(integer=5, fraction=2)
 	private BigDecimal pricePerDay;
-
 
 	public Long getId() {
 		return id;
@@ -93,9 +101,13 @@ public class Car {
 	@Override
 	public String toString() {
 		return "Car{" +
-				"carBrand='" + carBrand + '\'' +
+				"id=" + id +
+				", carBrand='" + carBrand + '\'' +
 				", carModel='" + carModel + '\'' +
+				", numberOfSeats=" + numberOfSeats +
 				", color='" + color + '\'' +
+				", note='" + note + '\'' +
+				", pricePerDay=" + pricePerDay +
 				'}';
 	}
 }

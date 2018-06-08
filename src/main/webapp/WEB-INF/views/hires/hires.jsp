@@ -20,7 +20,8 @@
     <spring:url value="/hires" var="hiresUrl" />
     <form:form action="${hiresUrl}" method="get" modelAttribute="hire" class="navbar-form navbar-right" role="search">
       <div class="form-group">
-          <input type="text" name="hireDate" value="${hireDate}" class="form-control" placeholder="Enter date(empy=all)"/>
+          <label>Find by hire date: (empty=all)</label>
+          <input type="date" name="hireDate" value="${hire.hireDate}" class="form-control" placeholder="Enter date(empty=all)"/>
       </div>
       <button type="submit" class="btn btn-default">Search</button>
     </form:form>
@@ -43,13 +44,12 @@
                 <td>
                     ${hire.id}
                 </td>
-                <td><fmt:formatDate pattern="dd/MM/yyyy" value="${hire.hireDate}" /></td>
+                <td><fmt:formatDate pattern="yyyy-MM-dd" value="${hire.hireDate}" /></td>
                 <td>${hire.customer.lastName}</td>
                 <td>${hire.car.carBrand} ${hire.car.carModel}</td>
-                <td>${hire.returnDate}</td>
-                <td>${4 * hire.car.pricePerDay}</td>
+                <td><fmt:formatDate pattern="yyyy-MM-dd" value="${hire.returnDate}" /></td>
+                <td>${hire.days * hire.car.pricePerDay}</td>
                 <td>${hire.note}</td>
-
                 <td>
                     <spring:url value="/customers/${hire.customer.id}" var="viewUrl" />
                     <spring:url value="/customers/${hire.customer.id}/hires/edit/${hire.id}" var="updateUrl" />

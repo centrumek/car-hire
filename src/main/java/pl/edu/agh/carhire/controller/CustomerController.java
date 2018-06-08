@@ -34,9 +34,6 @@ public class CustomerController {
 	@Autowired
 	private CustomerService customerService;
 
-	@Autowired
-	private HireService hireService;
-
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");

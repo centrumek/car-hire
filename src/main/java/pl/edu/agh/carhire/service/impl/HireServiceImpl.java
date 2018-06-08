@@ -31,17 +31,15 @@ public class HireServiceImpl implements HireService {
 	}
 
 	@Override
-	public List<Hire> findByHireDateGreaterThanEqualAndReturnDateLessThanEqual(Date hireDate, Date returnDate) {
-		return hireRepository.findByHireDateGreaterThanEqualAndReturnDateLessThanEqual(hireDate,returnDate);
-	}
-
-	@Override
 	public Hire save(Hire hire) {
-		return hireRepository.saveAndFlush(hire);
+		return hireRepository.save(hire);
 	}
 
 	@Override
 	public void remove(Long id) throws IllegalArgumentException {
-		hireRepository.deleteById(id);
+		Hire hire = hireRepository.getOne(id);
+		System.out.println(hire);
+		hireRepository.delete(hire);
+		hireRepository.flush();
 	}
 }

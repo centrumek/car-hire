@@ -10,9 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import java.util.Collection;
 import java.util.Date;
+
 
 @Controller
 @RequestMapping("/hires")
@@ -30,10 +30,15 @@ public class HiresController {
     }*/
 
     @RequestMapping(method=RequestMethod.GET)
-    public String getHires(@RequestParam(value="hireDate", required=false) @DateTimeFormat(pattern="dd/MM/yyyy") Date hireDate, Model model) {
+    public String getHires(@RequestParam(value="hireDate", required=false) @DateTimeFormat(pattern="yyyy-MM-dd") Date hireDate, Model model) {
         Collection<Hire> hires = (hireDate == null || "".equals(hireDate) ? hireService.findAll() : hireService.findByHireDate(hireDate));
-        model.addAttribute("hires", hires);
 
+        for(Hire hire: hires) {
+            long diff = hire.getReturnDate().getTime() - hire.getHireDate().getTime();
+            int days = (int) (diff / (1000*60*60*24));
+            hire.setDays(days);
+        }
+        model.addAttribute("hires", hires);
         return "hires";
     }
 

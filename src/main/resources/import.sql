@@ -6,9 +6,9 @@ delete from CARS;
 delete from CUSTOMERS;
 
  INSERT INTO users(ID, USERNAME, PASSWORD, enabled, firstname, lastname)
- VALUES (1,'admin', '$2a$04$AiszkJJxjxwP5X0VhWh99OZo55n/CqusJtudHwdUCRNJw0o5uUeXW', true, 'Admin', 'Adminovic');
+ VALUES (1,'admin', '$2a$04$AiszkJJxjxwP5X0VhWh99OZo55n/CqusJtudHwdUCRNJw0o5uUeXW', true, 'Tomasz', 'Madej');
  INSERT INTO users(ID, USERNAME, PASSWORD, enabled, firstname, lastname)
- VALUES (2,'user', '$2a$04$AiszkJJxjxwP5X0VhWh99OZo55n/CqusJtudHwdUCRNJw0o5uUeXW', true, 'User', 'Userovski');
+ VALUES (2,'user', '$2a$04$AiszkJJxjxwP5X0VhWh99OZo55n/CqusJtudHwdUCRNJw0o5uUeXW', true, 'Michal', 'Nowak');
 
  INSERT INTO ROLES (ID, ROLE)
  VALUES (1,'ROLE_ADMIN');
@@ -24,14 +24,14 @@ INSERT INTO CARS(ID, CAR_BRAND, CAR_MODEL, COLOR, NOTE, NUMBER_OF_SEATS, PRICE_P
   VALUES (1,'Ford','Fiesta','silver','Good car for small family', 5, 80),
          (2,'Mazda','RX5','black','Good car for car lovers', 2, 140),
          (3,'Fiat','125p','red','Good car for car passionates', 4, 50),
-         (4,'Opel','Vectra','black','', 4, 110),
-         (5,'Volkswagen','Passat','gold','', 4, 90),
-         (6,'Volkswagen','Polo','silver','', 4, 55),
-         (7,'Renault','Megan','silver','', 4, 110),
-         (8,'Renault','Clio','silver','', 4, 90),
-         (9,'Fiat','Punto','silver','', 4, 70),
-         (10,'Fiat','Doblo','silver','', 2, 150),
-         (11,'Skoda','Fabia','silver','', 4, 40);
+         (4,'Opel','Vectra','black','Super auto', 4, 110),
+         (5,'Volkswagen','Passat','gold','Super auto', 4, 90),
+         (6,'Volkswagen','Polo','silver','Super auto', 4, 55),
+         (7,'Renault','Megan','silver','Super auto', 4, 110),
+         (8,'Renault','Clio','silver','Super auto', 4, 90),
+         (9,'Fiat','Punto','silver','Super auto', 4, 70),
+         (10,'Fiat','Doblo','silver','Super auto', 2, 150),
+         (11,'Skoda','Fabia','silver','Super auto', 4, 40);
 
 INSERT INTO CUSTOMERS(ID,FIRSTNAME,LASTNAME,EMAIL,PHONE)
 	VALUES	(1,'Mateusz','Kopec','ematkop@host.pl','123456789'),
@@ -55,10 +55,10 @@ INSERT INTO CUSTOMERS(ID,FIRSTNAME,LASTNAME,EMAIL,PHONE)
                 (19,'Lukasz','Drapala','elukadr@host.pl','123456789'),
                 (20,'Piotr','Deren','user@host.pl','123456789');
 
-INSERT INTO HIRES(ID,RENTAL_DATE,RETURN_DATE,CUSTOMER_ID,CAR_ID,NOTE)
-	VALUES	(1,'2020-12-12','2020-12-30',1,6,''),
-                (2,'2020-12-12','2020-12-30',2,5,''),
-                (3,'2020-12-12','2020-12-30',3,4,''),
-                (4,'2020-12-12','2020-12-30',4,3,''),
-                (5,'2020-12-12','2020-12-30',5,2,''),
-                (6,'2020-12-12','2020-12-30',6,1,'');
+INSERT INTO HIRES(ID,HIRE_DATE,RETURN_DATE,CUSTOMER_ID,CAR_ID,NOTE)
+	VALUES	(1,'2020-12-12','2020-12-30',1,6,'Super rezerweacja'),
+                (2,'2020-12-12','2020-12-30',2,5,'Super rezerweacja'),
+                (3,'2020-12-12','2020-12-30',3,4,'Super rezerweacja'),
+                (4,'2020-12-12','2020-12-30',4,3,'Super rezerweacja'),
+                (5,'2020-12-12','2020-12-30',5,2,'Super rezerweacja'),
+                (6,'2020-12-12','2020-12-30',6,1,'Super rezerweacja');

@@ -37,8 +37,8 @@
     </div>
 
     <div class="row">
-        <label class="col-sm-2">Days</label>
-        <div class="col-sm-10">${hire.days}</div>
+        <label class="col-sm-2">Return Date</label>
+        <div class="col-sm-10">${hire.returnDate}</div>
     </div>
 
     <div class="row">

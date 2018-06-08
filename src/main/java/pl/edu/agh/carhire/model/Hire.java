@@ -2,18 +2,11 @@ package pl.edu.agh.carhire.model;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.util.Date;
+import java.util.Objects;
 
 @Entity
 @Table(name = "hires")
@@ -27,27 +20,29 @@ public class Hire {
 	@Temporal(TemporalType.DATE)
 	@FutureOrPresent
     @DateTimeFormat(pattern="yyyy-MM-dd")
+    @Column(name = "hire_date")
 	@NotNull
-    @Column(name = "rental_date")
 	private Date hireDate;
 
     @Temporal(TemporalType.DATE)
-    @FutureOrPresent
+    @Future
     @DateTimeFormat(pattern="yyyy-MM-dd")
-    @NotNull
     @Column(name = "return_date")
+	@NotNull
     private Date returnDate;
 
-    @ManyToOne //(cascade=CascadeType.PERSIST)
+    @ManyToOne
 	@JoinColumn(name = "customer_id")
 	private Customer customer;
 
-	@ManyToOne //(cascade=CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "car_id")
-	@NotNull
 	private Car car;
 
-	@NotNull
+	@Transient
+	private int Days;
+
+	@NotEmpty
 	private String note;
 
 	public Long getId() {
@@ -98,6 +93,28 @@ public class Hire {
 		this.note = note;
 	}
 
+	public int getDays() {
+		return Days;
+	}
+
+	public void setDays(int days) {
+		Days = days;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Hire hire = (Hire) o;
+		return Objects.equals(id, hire.id);
+	}
+
+	@Override
+	public int hashCode() {
+
+		return Objects.hash(id);
+	}
+
 	@Override
 	public String toString() {
 		return "Hire{" +
@@ -106,6 +123,7 @@ public class Hire {
 				", returnDate=" + returnDate +
 				", customer=" + customer +
 				", car=" + car +
+				", Days=" + Days +
 				", note='" + note + '\'' +
 				'}';
 	}

@@ -5,7 +5,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <jsp:useBean id="now" class="java.util.Date"/>
-<fmt:formatDate value="${now}" type="date" pattern="dd/MM/yyyy" var="fmtNow" />
+<fmt:formatDate value="${now}" type="date" pattern="yyyy-MM-dd" var="fmtNow" />
 
 <spring:url value="/" var="urlHome" />
 <spring:url value="/hires?hireDate=${fmtNow}" var="urlHires"/>

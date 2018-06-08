@@ -4,6 +4,11 @@
     <facet type="Spring" name="Spring">
       <configuration />
     </facet>
+    <facet type="web" name="Web">
+      <configuration>
+        <webroots />
+      </configuration>
+    </facet>
   </component>
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
     <output url="file://$MODULE_DIR$/target/classes" />
@@ -15,6 +20,15 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="org.thymeleaf:thymeleaf:Release" level="project" />
+    <orderEntry type="library" name="org.thymeleaf.extras:thymeleaf-extras-conditionalcomments:Release" level="project" />
+    <orderEntry type="library" name="org.thymeleaf.extras:thymeleaf-extras-tiles2:Release" level="project" />
+    <orderEntry type="library" name="org.thymeleaf.extras:thymeleaf-extras-java8time:Release" level="project" />
+    <orderEntry type="library" name="org.thymeleaf:thymeleaf-testing:Release" level="project" />
+    <orderEntry type="library" name="org.thymeleaf.extras:thymeleaf-extras-springsecurity3:Release" level="project" />
+    <orderEntry type="library" name="org.thymeleaf.extras:thymeleaf-extras-springsecurity4:Release" level="project" />
+    <orderEntry type="library" name="org.thymeleaf:thymeleaf-spring3:Release" level="project" />
+    <orderEntry type="library" name="org.thymeleaf:thymeleaf-spring4:Release" level="project" />
     <orderEntry type="library" name="Maven: org.apache.maven:maven-model:3.5.3" level="project" />
     <orderEntry type="library" name="Maven: org.codehaus.plexus:plexus-utils:3.1.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.maven:maven-core:3.5.3" level="project" />
