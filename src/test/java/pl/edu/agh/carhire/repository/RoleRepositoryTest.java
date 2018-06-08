@@ -30,7 +30,7 @@ public class RoleRepositoryTest {
     }
 
     @Test
-    public void addProperHireTest(){
+    public void addProperRoleTest(){
         Role properRole=new Role();
 
         properRole.setId(1L);

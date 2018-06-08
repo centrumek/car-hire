@@ -22,14 +22,14 @@ public class UserRepositoryTest {
     private UserRepository userRepository;
 
     @Test(expected = DataIntegrityViolationException.class)
-    public void addEmptyHireTest(){
+    public void addEmptyUserTest(){
         User emptyUser=new User();
         entityManager.persist(emptyUser);
         userRepository.flush();
     }
 
     @Test
-    public void addProperHireTest(){
+    public void addProperUserTest(){
         User properUser=new User();
 
         properUser.setId(1L);
