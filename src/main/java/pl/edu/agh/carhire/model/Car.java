@@ -1,12 +1,9 @@
 package pl.edu.agh.carhire.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.math.BigDecimal;
+import java.util.Set;
 
 @Entity
 @Table(name="cars")
@@ -33,6 +30,9 @@ public class Car {
 
 	@NotEmpty()
 	private String note;
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "car")
+	private Set<Hire> hires;
 
 	@Digits(integer=5, fraction=2)
 	private BigDecimal pricePerDay;
@@ -93,9 +93,12 @@ public class Car {
 		this.pricePerDay = pricePerDay;
 	}
 
-	//Check if this is for New of Update
-	public boolean isNew() {
-		return (this.id == null);
+	public Set<Hire> getHires() {
+		return hires;
+	}
+
+	public void setHires(Set<Hire> hires) {
+		this.hires = hires;
 	}
 
 	@Override

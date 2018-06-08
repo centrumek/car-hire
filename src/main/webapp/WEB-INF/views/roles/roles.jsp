@@ -19,7 +19,7 @@
     <spring:url value="/roles" var="rolesUrl" />
     <form:form action="${rolesUrl}" method="get" modelAttribute="role" class="navbar-form navbar-right" role="search">
       <div class="form-group">
-        <input type="text" name="carModel" value="${carModel}" class="form-control" placeholder="Search by car model"/>
+        <input type="text" name="carModel" value="${carModel}" class="form-control" placeholder="Search by role"/>
       </div>
       <button type="submit" class="btn btn-default">Search</button>
     </form:form>

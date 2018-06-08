@@ -10,7 +10,7 @@
 
     <properties>
         <java-version>1.8</java-version>
-        <apachetiles.version>3.0.5</apachetiles.version>
+        <apachetiles.version>3.0.8</apachetiles.version>
         <org.apache.maven.version>3.5.3</org.apache.maven.version>
     </properties>
 
@@ -55,6 +55,10 @@
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-taglibs</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+        </dependency>
 
         <!--derby embedded local database-->
         <dependency>
@@ -83,14 +87,6 @@
             <artifactId>jackson-databind</artifactId>
         </dependency>
 
-
-        <!--Apache tomcat-->
-        <dependency>
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>tomcat-catalina</artifactId>
-            <version>8.5.29</version>
-        </dependency>
-
         <!-- JSP Standard Tag Library -->
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -113,13 +109,6 @@
             <artifactId>tiles-jsp</artifactId>
             <version>${apachetiles.version}</version>
         </dependency>
-
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>3.4</version>
-        </dependency>
-
     </dependencies>
 
     <build>
@@ -129,7 +118,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.1</version>
+                <version>3.7.0</version>
                 <configuration>
                     <source>${java-version}</source>
                     <target>${java-version}</target>

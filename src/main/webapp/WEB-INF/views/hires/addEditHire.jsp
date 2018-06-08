@@ -5,7 +5,7 @@
 <div class="container">
 
 	<c:choose>
-		<c:when test="${hireForm['new']}">
+		<c:when test="${hire['id'] == null}">
 			<h1>Add Hire</h1>
 		</c:when>
 		<c:otherwise>

@@ -6,7 +6,7 @@
 <div class="container">
 
 	<c:choose>
-		<c:when test="${car['new']}">
+		<c:when test="${car['id'] == null}">
 			<h1>Add car</h1>
 		</c:when>
 		<c:otherwise>

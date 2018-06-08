@@ -6,7 +6,7 @@
 <div class="container">
 
 	<c:choose>
-		<c:when test="${role['new']}">
+		<c:when test="${role['id'] == null}">
 			<h1>Add Role</h1>
 		</c:when>
 		<c:otherwise>
