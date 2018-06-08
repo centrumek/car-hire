@@ -6,6 +6,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
+/**
+ * Pierwotna klasa konfiguracyjna Spring Boot MVC
+ */
 @Configuration
 @ComponentScan(basePackages = "pl.edu.agh.carhire",
         excludeFilters = {

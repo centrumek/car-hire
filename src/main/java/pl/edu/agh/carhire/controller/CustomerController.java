@@ -24,6 +24,9 @@ import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
 
+/**
+ * Klasa kontrolujaca kontekst klienta
+ */
 @Controller
 @Transactional
 @RequestMapping("/customers")
@@ -40,6 +43,13 @@ public class CustomerController {
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(sdf, true));
 	}
 
+	/**
+	 * Metoda restowa typu GET pobierajaca Klientow.
+	 * @param lastName nazwisko klienta
+	 * @param firstName imie klienta
+	 * @param model obiekt przeplywajacy miedzy frontem, a backendem.
+	 * @return customers.jsp
+	 */
 	@RequestMapping(method= RequestMethod.GET)
 	public String getCustomers(@RequestParam(value="lastName", required=false) String lastName, @RequestParam(required=false) String firstName, Model model) {
 		Collection<Customer> customers = ((lastName == null || "".equals(lastName)) && (firstName == null || "".equals(firstName)) ?
@@ -49,12 +59,25 @@ public class CustomerController {
 		return "customers";
 	}
 
+	/**
+	 * Metoda restowa typu GET inicjalizujaca nowego klineta
+	 * @param model obiekt przeplywajacy miedzy frontem, a backendem.
+	 * @return addEditCustomer.jsp
+	 */
 	@RequestMapping(value = "/new", method = RequestMethod.GET)
 	public String newCustomer(Model model) {
 		model.addAttribute("customer", new Customer());
 		return "addEditCustomer";
 	}
 
+	/**
+	 * Metoda restowa typu POST zapisuajca klineta
+	 * @param customer klient do zapisu
+	 * @param result wynik zwrotny
+	 * @param model obiekt przeplywajacy miedzy frontem, a backendem.
+	 * @param redirectAttributes atrybut przekierowania
+	 * @return addEditCustomer.jsp lub przekierowanie do /customers{customerID}
+	 */
 	@RequestMapping(method=RequestMethod.POST)
 	public String saveCustomer(@Valid Customer customer, BindingResult result, Model model, final RedirectAttributes redirectAttributes) {
 		if(result.hasErrors()) {
@@ -68,6 +91,12 @@ public class CustomerController {
 		return "redirect:/customers/" + customer.getId();
 	}
 
+	/**
+	 * Metoda restowa typu GET edytujaca klienta
+	 * @param id klienta
+	 * @param model obiekt przeplywajacy miedzy frontem, a backendem.
+	 * @return addEditCustomer.jsp
+	 */
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
 	public String editCustomer(@PathVariable Long id, Model model) {
 		Customer customer = customerService.findOne(id);
@@ -75,6 +104,12 @@ public class CustomerController {
 		return "addEditCustomer";
 	}
 
+	/**
+	 * Metoda restowa typu GET pobierajaca klienta na podstawie ID
+	 * @param id klineta
+	 * @param model obiekt przeplywajacy miedzy frontem, a backendem.
+	 * @return showCustomer.jsp
+	 */
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public String viewCustomer(@PathVariable("id") Long id, Model model) {
 
@@ -91,6 +126,12 @@ public class CustomerController {
 
 	}
 
+	/**
+	 * Metoda restowa typu GET usuwajaca klienta po ID
+	 * @param id klienta
+	 * @param redirectAttributes atrybut przekirowania
+	 * @return przekierowanie do /customers
+	 */
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
 	public String removeCustomer(@PathVariable Long id, final RedirectAttributes redirectAttributes) {
 		logger.debug("delete customer: {}", id);

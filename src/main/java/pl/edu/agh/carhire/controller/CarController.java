@@ -19,6 +19,9 @@ import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
 
+/**
+ * Klasa kontrolujaca kontekst auta
+ */
 @Controller
 @Transactional
 @RequestMapping("/cars")
@@ -35,6 +38,12 @@ public class CarController {
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(sdf, true));
 	}
 
+	/**
+	 * Metoda restowa typu GET pobierajaca auto na podstawie modelu
+	 * @param carModel model auta
+	 * @param model obiekt przeplywajacy miedzy frontem, a backendem.
+	 * @return cars.jsp
+	 */
 	@RequestMapping(method=RequestMethod.GET)
 	public String getCars(@RequestParam(value="carModel", required=false) String carModel, Model model) {
 		Collection<Car> cars = (carModel == null || "".equals(carModel) ? carService.findAll() : carService.findByCarModel(carModel));
@@ -43,6 +52,12 @@ public class CarController {
 		return "cars";
 	}
 
+	/**
+	 * Metoda restowa typu GET pobieajaca auto na podstawie ID
+	 * @param id auta
+	 * @param model obiekt przeplywajacy miedzy frontem, a backendem.
+	 * @return showCar.jsp
+	 */
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public String viewCar(@PathVariable("id") Long id, Model model) {
 
@@ -59,15 +74,27 @@ public class CarController {
 
 	}
 
+	/**
+	 * Metoda restowa typu GET usuwajaca auto po ID
+	 * @param id auta
+	 * @return przekierowanie do /cars
+	 */
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
 	public String removeCar(@PathVariable Long id) {
 		carService.remove(id);
 		return "redirect:/cars";
 	}
 
+	/**
+	 * Metoda restowa typu POST zapisujaca obiekt auta do bazy
+	 * @param car auto do zapisu
+	 * @param result wynik zwrotny
+	 * @param model obiekt przeplywajacy miedzy frontem, a backendem.
+	 * @param redirectAttributes atrybut przekierowania
+	 * @return addEditCar.jsp lub przekieroawanie do /cars
+	 */
 	@RequestMapping(method=RequestMethod.POST)
 	public String saveCar(@Valid Car car, BindingResult result, Model model, final RedirectAttributes redirectAttributes) {
-		System.out.println(car);
 		if(result.hasErrors()) {
 			model.addAttribute("car", car);
 			return "addEditCar";
@@ -78,6 +105,12 @@ public class CarController {
 		return "redirect:/cars";
 	}
 
+	/**
+	 * Metoda restowa typu GET edytujaca auto
+	 * @param id id auta
+	 * @param model obiekt przeplywajacy miedzy frontem, a backendem.
+	 * @return addEditCar.jsp
+	 */
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
 	public String editCar(@PathVariable Long id, Model model) {
 		Car car = carService.findOne(id);
@@ -85,6 +118,11 @@ public class CarController {
 		return "addEditCar";
 	}
 
+	/**
+	 * Metoda restowa typu GET inicjalzujaca nowe auto.
+	 * @param model obiekt przeplywajacy miedzy frontem, a backendem.
+	 * @return addEditCar.jsp
+	 */
 	@RequestMapping(value = "/new", method = RequestMethod.GET)
 	public String newCar(Model model) {
 		model.addAttribute("car", new Car());

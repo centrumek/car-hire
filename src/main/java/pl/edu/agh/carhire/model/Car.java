@@ -5,6 +5,9 @@ import javax.validation.constraints.*;
 import java.math.BigDecimal;
 import java.util.Set;
 
+/**
+ * Klasa reprezentujaca obiekt biznesowy samochodu posiadajaca dane o jego wyposazeniu oraz marce.
+ */
 @Entity
 @Table(name="cars")
 public class Car {

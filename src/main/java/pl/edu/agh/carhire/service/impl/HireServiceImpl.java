@@ -5,12 +5,11 @@ import pl.edu.agh.carhire.repository.HireRepository;
 import pl.edu.agh.carhire.service.HireService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.Date;
 import java.util.List;
 
 @Service
-public class HireServiceImpl implements HireService {
+class HireServiceImpl implements HireService {
 
 	@Autowired
 	private HireRepository hireRepository;

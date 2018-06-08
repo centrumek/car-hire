@@ -3,10 +3,11 @@ package pl.edu.agh.carhire.model;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
-
-
 import javax.persistence.*;
 
+/**
+ * Klasa reprezentujaca obiekt biznesowy uzytkownika systemu.
+ */
 @Entity
 @Table(name = "users")
 public class User implements Serializable {

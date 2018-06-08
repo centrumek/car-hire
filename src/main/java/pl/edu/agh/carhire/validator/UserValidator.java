@@ -1,18 +1,16 @@
 package pl.edu.agh.carhire.validator;
 
 import pl.edu.agh.carhire.model.User;
-import pl.edu.agh.carhire.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
+/**
+ * Klasa walidujaca poprawnosc nazwy oraz hasla nowo dodawanego uzytkownika do systemu.
+ */
 @Component
 public class UserValidator implements Validator {
-
-    @Autowired
-    private UserService userService;
 
     @Override
     public boolean supports(Class<?> aClass) {
@@ -27,17 +25,11 @@ public class UserValidator implements Validator {
         if (user.getUsername().length() < 4 || user.getUsername().length() > 32) {
             errors.rejectValue("username", "Size.userForm.username");
         }
-/*        if (userService.findByUserName(user.getUsername()) != null) {
-            errors.rejectValue("username", "Duplicate.userForm.username");
-        }*/
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "NotEmpty");
         if (user.getPassword().length() < 4 ) {
             errors.rejectValue("password", "Size.userForm.password");
         }
 
-/*        if (!user.getPasswordConfirm().equals(user.getPassword())) {
-            errors.rejectValue("passwordConfirm", "Diff.userForm.passwordConfirm");
-        }*/
     }
 }

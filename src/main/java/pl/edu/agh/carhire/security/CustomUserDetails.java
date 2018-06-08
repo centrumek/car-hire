@@ -9,6 +9,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+/**
+ * Klasa odpowiadajaca pobieranie kontekstu zalogowanego użytkownika wraz
+ * z jego prawami dostepu do roznych modulow aplikacji
+ */
 public class CustomUserDetails extends User implements UserDetails {
 	
 	private static final long serialVersionUID = 1L;

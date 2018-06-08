@@ -8,15 +8,15 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 
+/**
+ * Repozytorium bazodanowe dynamicznie generujace zapytania sql dla tabeli customers
+ */
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
-
 	List<Customer> findByLastName(String lastName) throws DataAccessException;
 	List<Customer> findByLastNameAndFirstNameOrderByLastNameAscAllIgnoreCase(String lastName, String firstName);
-
 	@Query("SELECT DISTINCT customer FROM Customer customer left join fetch customer.hires WHERE customer.lastName LIKE :lastName%")
 	List<Customer> findByLastNameWithHires(@Param("lastName") String lastName);
-
 	@Query("SELECT customer FROM Customer customer left join fetch customer.hires WHERE customer.id =:id")
 	Customer findByIdWithHires(@Param("id") Long id);
 }

@@ -3,6 +3,9 @@ package pl.edu.agh.carhire.model;
 import javax.persistence.*;
 import java.util.Set;
 
+/**
+ * Klasa reprezentujaca obiekt biznesowy rol uzytkownikow.
+ */
 @Entity
 @Table(name="roles")
 public class Role {
@@ -17,8 +20,6 @@ public class Role {
 
 	@ManyToMany(mappedBy = "roles")
 	private Set<User> users;
-
-
 
 	public String getName() {
 		return name;

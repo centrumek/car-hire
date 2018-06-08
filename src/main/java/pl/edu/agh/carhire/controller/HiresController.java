@@ -13,7 +13,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.util.Collection;
 import java.util.Date;
 
-
+/**
+ * Klasa kontrolujaca kontekst wypozyczen.
+ */
 @Controller
 @RequestMapping("/hires")
 public class HiresController {
@@ -23,12 +25,12 @@ public class HiresController {
     @Autowired
     private HireService hireService;
 
-/*    @InitBinder
-    public void initBinder(WebDataBinder binder) {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        binder.registerCustomEditor(Date.class, new CustomDateEditor(sdf, true));
-    }*/
-
+    /**
+     * Metoda restowa typu GET pobierajaca wypozyczenia.
+     * @param hireDate - data rozpoczecia wypozyczenia.
+     * @param model - obiekt przeplywajacy miedzy frontem, a backendem.
+     * @return hires.jsp
+     */
     @RequestMapping(method=RequestMethod.GET)
     public String getHires(@RequestParam(value="hireDate", required=false) @DateTimeFormat(pattern="yyyy-MM-dd") Date hireDate, Model model) {
         Collection<Hire> hires = (hireDate == null || "".equals(hireDate) ? hireService.findAll() : hireService.findByHireDate(hireDate));
@@ -42,6 +44,12 @@ public class HiresController {
         return "hires";
     }
 
+    /**
+     * Metoda restowa typu GET uzuwajaca wypozyczenie o danym ID
+     * @param id wypozyczenia
+     * @param redirectAttributes atrybut przekierowania kontekstu
+     * @return przekierowanie do /hires
+     */
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     public String removeHire(@PathVariable Long id, final RedirectAttributes redirectAttributes) {
         logger.debug("delete hire: {}", id);

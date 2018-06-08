@@ -19,6 +19,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.util.Collection;
 import java.util.HashSet;
 
+/**
+ * Klasa kontrolujaca kontekst rol.
+ */
 @Controller
 @Transactional
 @RequestMapping("/admin/roles")
@@ -32,7 +35,12 @@ public class RoleController {
 	@Autowired
 	MessageSource messageSource;
 
-
+	/**
+	 * Metoda restowa typu GET pobierajaca role uzytkownikow po nazwie
+	 * @param roleName nazwa roli
+	 * @param model obiekt przeplywajacy miedzy frontem, a backendem.
+	 * @return roles.jsp
+	 */
 	@RequestMapping(method= RequestMethod.GET)
 	public String getRoles(@RequestParam(value="roleName", required=false) String roleName, Model model) {
 		Collection<Role> roles;
@@ -48,12 +56,23 @@ public class RoleController {
 		return "roles";
 	}
 
+	/**
+	 * Metoda restowa typu GET inicjalizjaca nowa role
+	 * @param model obiekt przeplywajacy miedzy frontem, a backendem.
+	 * @return addEditRole.jsp
+	 */
 	@RequestMapping(value = "/new", method = RequestMethod.GET)
 	public String newRole(Model model) {
 		model.addAttribute("role", new Role());
 		return "addEditRole";
 	}
 
+	/**
+	 * Metoda restowa typu GET edytujaca dana role
+	 * @param id roli
+	 * @param model obiekt przeplywajacy miedzy frontem, a backendem.
+	 * @return addEditRole.jsp
+	 */
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
 	public String editRole(@PathVariable Long id, Model model) {
 		Role role = roleService.findOne(id);
@@ -61,6 +80,14 @@ public class RoleController {
 		return "addEditRole";
 	}
 
+	/**
+	 * Metoda restowa typu POST zapisujaca role do bazy
+	 * @param role rola do zapisu
+	 * @param result wynik zwrotny
+	 * @param model obiekt przeplywajacy miedzy frontem, a backendem.
+	 * @param redirectAttributes atrybut przekierowania
+	 * @return addEditRole.jsp lub przekierowanie do /admin/roles/{roleID}
+	 */
 	@RequestMapping(method=RequestMethod.POST)
 	public String saveRole(Role role, BindingResult result, Model model, final RedirectAttributes redirectAttributes) {
 
@@ -77,6 +104,12 @@ public class RoleController {
 		return "redirect:/admin/roles/" + role.getId();
 	}
 
+	/**
+	 * Metoda restowa typu GET pobierajaca role po ID
+	 * @param id roli
+	 * @param model obiekt przeplywajacy miedzy frontem, a backendem.
+	 * @return showRole.jsp
+	 */
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public String viewRole(@PathVariable("id") Long id, Model model) {
 
@@ -93,6 +126,12 @@ public class RoleController {
 
 	}
 
+	/**
+	 * Metoda restowa typu GET usuwajaca role po ID
+	 * @param id roli
+	 * @param redirectAttributes atrybut przekierowania
+	 * @return przekierowanie do /roles
+	 */
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
 	public String removeRole(@PathVariable Long id, final RedirectAttributes redirectAttributes) {
 		logger.debug("delete role: {}", id);

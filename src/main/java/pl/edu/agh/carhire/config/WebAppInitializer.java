@@ -1,9 +1,11 @@
 package pl.edu.agh.carhire.config;
 
-
 import org.springframework.core.annotation.Order;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
+/**
+ * Klasa inicjalizujaca aplikacje webowa
+ */
 @Order(1)
 public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 

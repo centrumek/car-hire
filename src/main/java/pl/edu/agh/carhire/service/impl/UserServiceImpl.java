@@ -1,25 +1,18 @@
 package pl.edu.agh.carhire.service.impl;
 
 import pl.edu.agh.carhire.model.User;
-import pl.edu.agh.carhire.repository.RoleRepository;
 import pl.edu.agh.carhire.repository.UserRepository;
 import pl.edu.agh.carhire.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
 
-
 @Service
-public class UserServiceImpl implements UserService {
+class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserRepository userRepository;
-
-	@Autowired
-	private RoleRepository roleRepository;
 
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -53,18 +46,6 @@ public class UserServiceImpl implements UserService {
 					"User with id=%d does not exist.", id));
 		}
 		userRepository.deleteById(id);
-	}
-
-	@Override
-	@Transactional(readOnly = true)
-	public User findOneWithRoles(Long id) {
-		return userRepository.findByUserIdWithRoles(id);
-	}
-
-	@Override
-	@Transactional(readOnly = true)
-	public User findByUserNameWithRoles(String username) {
-		return userRepository.findByUserNameWithRoles(username);
 	}
 
 	@Override

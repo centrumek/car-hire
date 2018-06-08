@@ -6,10 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
-
 /**
- * A converter class used in views to map id's to actual Role objects.
- * 
+ * Klasa odpowiadajaca za konwertowanie id roli z typu String do Long.
  */
 @Component
 public class StringToUserRoleConverter implements Converter<String, Role> {
@@ -21,7 +19,6 @@ public class StringToUserRoleConverter implements Converter<String, Role> {
 	public Role convert(String element) {
 		Long id = Long.parseLong((String)element);
 		Role role = roleService.findOne(id);
-		System.out.println("\n\n\nRole : " + role);
 		return role;
 	}
 }

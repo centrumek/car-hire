@@ -1,13 +1,15 @@
 package pl.edu.agh.carhire.model;
 
 import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.*;
 import javax.validation.constraints.*;
-
 import java.util.Date;
 import java.util.Objects;
 
+/**
+ * Klasa reprezentujaca obiekt biznesowy wypozyczenia samochodu wraz z danymi odnosnie
+ * klienta oraz specyfikacji auta z datą wypozyczenia i zwrotu.
+ */
 @Entity
 @Table(name = "hires")
 public class Hire {
@@ -111,7 +113,6 @@ public class Hire {
 
 	@Override
 	public int hashCode() {
-
 		return Objects.hash(id);
 	}
 

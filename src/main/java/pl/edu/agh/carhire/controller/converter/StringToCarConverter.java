@@ -6,10 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
-
 /**
- * Converts string to Car object. String is id (long).
- * 
+ * Klasa odpowiadajaca za konwertowanie id auta z typu String do Long.
  */
 @Component
 public class StringToCarConverter implements Converter<String, Car> {

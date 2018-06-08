@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class RoleServiceImpl implements RoleService {
+class RoleServiceImpl implements RoleService {
 
 	@Autowired
 	private RoleRepository roleRepository;
@@ -18,11 +18,6 @@ public class RoleServiceImpl implements RoleService {
 	public Role findOne(Long id) {
 		return roleRepository.findById(id).get();
 	}
-
-//	@Override
-//	public Set<Role> findRolesByUserName(String userName) {
-//		return roleRepository.findRolesByUserName(userName);
-//	}
 
 	@Override
 	public Role save(Role role) {

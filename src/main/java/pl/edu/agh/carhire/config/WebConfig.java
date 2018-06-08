@@ -19,6 +19,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 
+/**
+ * Klasa konfiguracyjna aplikacji webowej.
+ */
 @Configuration
 @EnableWebMvc
 @ComponentScan("pl.edu.agh.carhire")
@@ -40,14 +43,13 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
     }
 
-    // Asking DispatcherServlet to forward requests for static resources to the servlet container’s default servlet and not to try to handle them itself
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
         configurer.enable();
     }
 
     /**
-     * Configure TilesConfigurer.
+     * Konfiguracja TilesConfigurer.
      */
     @Bean
     public TilesConfigurer tilesConfigurer() {
@@ -60,7 +62,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     }
 
     /**
-     * Configure ViewResolvers to deliver preferred views.
+     * Konfiguracja ViewResolvers w celu dostarczenia preferowanego widoku.
      */
     @Bean
     public ViewResolver viewResolver() {
@@ -68,7 +70,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     }
 
     /**
-     * Configure ResourceHandlers to serve static resources like CSS/ Javascript etc...
+     * Konfiguracja ResourceHandlers do zaladowania statycznych zasobow takich jak CSS/ Javascript etc...
      */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
@@ -76,19 +78,19 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     }
 
     /**
-     * Register formatters or converters
-     * (in this case converter from String car.id returned from view addEditHires
-     * to object Car, so Hibernate can persist hire.car to db)
+     * Rejestr formaterow i konwerterow
+     * ( w tym przypadku konwerter konwertuje z Stringa car.id zwracany z widoku addEditHires
+     * do obiektu Car, wiec Hibernate moze zapisac hire.car do bazy)
      */
     @Override
     public void addFormatters(FormatterRegistry registry) {
-        // Add formatters and/or converters
 		registry.addConverter(stringToCarConverter);
         registry.addConverter(stringToUserRoleConverter);
     }
 
     /**
-     * Configure MessageSource to lookup any validation/error message in internationalized property files
+     * Konfiguracja MessageSource do znajdowania walidacji bledow wiadomosci
+     * w pikach konifguracyjnych
      */
     @Bean
     public MessageSource messageSource() {

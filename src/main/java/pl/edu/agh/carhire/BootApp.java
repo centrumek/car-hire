@@ -10,7 +10,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
-
+/**
+ * Klasa startujaca aplikacje car-hire za pomocą Spring Boot'a wraz z osadzonym
+ * w srodku niej Tomcatem oraz lokalna baza danych Derby.
+ */
 @EnableAutoConfiguration
 @Configuration
 @EntityScan("pl.edu.agh.carhire.model")
@@ -25,5 +28,4 @@ public class BootApp {
     ServletWebServerFactory servletWebServerFactory(){
         return new TomcatServletWebServerFactory();
     }
-
 }

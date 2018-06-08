@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class CarServiceImpl implements CarService {
+class CarServiceImpl implements CarService {
 
 	@Autowired
 	private CarRepository carRepository;
@@ -27,11 +27,6 @@ public class CarServiceImpl implements CarService {
 	@Override
 	public List<Car> findByCarModel(String carModel) {
 		return carRepository.findByCarModel(carModel);
-	}
-
-	@Override
-	public List<Car> findByIdNotIn(List<Long> carIDs) {
-		return carRepository.findByIdNotIn(carIDs);
 	}
 
 	@Override

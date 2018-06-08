@@ -6,13 +6,11 @@ import pl.edu.agh.carhire.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.Collection;
 import java.util.List;
 
-
 @Service
-public class CustomerServiceImpl implements CustomerService {
+class CustomerServiceImpl implements CustomerService {
 
 	@Autowired
 	private CustomerRepository customerRepository;
@@ -25,11 +23,6 @@ public class CustomerServiceImpl implements CustomerService {
 	@Override
 	public List<Customer> findAll() {
 		return customerRepository.findAll();
-	}
-
-	@Override
-	public Collection<Customer> findByLastName(String lastName) {
-		return customerRepository.findByLastName(lastName);
 	}
 
 	@Override
@@ -58,8 +51,4 @@ public class CustomerServiceImpl implements CustomerService {
 		return customerRepository.findByIdWithHires(id);
 	}
 
-	@Override
-	public Collection<Customer> findByLastNameWithRentals(String lastName) {
-		return customerRepository.findByLastNameWithHires(lastName);
-	}
 }

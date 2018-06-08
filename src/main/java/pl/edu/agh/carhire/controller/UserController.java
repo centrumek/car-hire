@@ -27,6 +27,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 
+/**
+ * Klasa kontorlujaca kontekst uzytkownika
+ */
 @Controller
 @Transactional
 @RequestMapping("/admin/users")
@@ -47,13 +50,19 @@ public class UserController {
 	MessageSource messageSource;
 
 	/**
-	 * This method will provide Role list to views
+	 * Metoda pobierjaaca liste rol do widoku.
 	 */
 	@ModelAttribute("roles")
 	public List<Role> initializeProfiles() {
 		return roleService.findAll();
 	}
 
+	/**
+	 * Metoda restowa typu GET pobierajaca uzytkownikow po nazwie.
+	 * @param userName nazwa uzytkownika
+	 * @param model obiekt przeplywajacy miedzy frontem, a backendem.
+	 * @return users.jsp
+	 */
 	@RequestMapping(method= RequestMethod.GET)
 	public String getUsers(@RequestParam(value="userName", required=false) String userName, Model model) {
 		Collection<User> users;
@@ -69,27 +78,41 @@ public class UserController {
 		return "users";
 	}
 
+	/**
+	 * Metoda restowa typu GET inicjalzijaca nowego uzytkownika
+	 * @param model obiekt przeplywajacy miedzy frontem, a backendem.
+	 * @return addEditUser.jsp
+	 */
 	@RequestMapping(value = "/new", method = RequestMethod.GET)
 	public String newUser(Model model) {
 		model.addAttribute("user", new User());
 		return "addEditUser";
 	}
 
+	/**
+	 * Metoda restowa typu GET edytujaca uzytkownika
+	 * @param id uzytkownika
+	 * @param model obiekt przeplywajacy miedzy frontem, a backendem.
+	 * @return addEditUser.jsp
+	 */
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
 	public String editUser(@PathVariable Long id, Model model) {
 		User user = userService.findOne(id);
 
-		/* if we want to have FetchType.LAZY(which is default for @OneToMany and @ManyToMany) for 'roles' collection
-		in User entity, we will get this exception: org.hibernate.LazyInitializationException:
-		failed to lazily initialize a collection of role: com.ranko.rent_a_car.model.User.roles, could not initialize proxy - no Session
-		To avoid that, one way is to initialize collection while still have session (before going to view)
-		*/
-		user.getRoles().size();  // initializing collection
+		user.getRoles().size();
 
 		model.addAttribute("user", user);
 		return "addEditUser";
 	}
 
+	/**
+	 * Metoda restowa typu POST zapisujaca uzytkownika do bazy
+	 * @param user uzytkownik do zapisu
+	 * @param result wynik zwrotu
+	 * @param model obiekt przeplywajacy miedzy frontem, a backendem.
+	 * @param redirectAttributes atrubyt przekierowania
+	 * @return addEditUser.jsp lub przekeirowanie do /admin/users/{userID}
+	 */
 	@RequestMapping(method=RequestMethod.POST)
 	public String saveUser(User user, BindingResult result, Model model, final RedirectAttributes redirectAttributes) {
 		userValidator.validate(user, result);
@@ -99,14 +122,6 @@ public class UserController {
 			return "addEditUser";
 		}
 
-		/*
-         * Preferred way to achieve uniqueness of field [username] should be implementing custom @Unique annotation
-         * and applying it on field [username] of Model class [User].
-         *
-         * Below mentioned peace of code [if block] is to demonstrate that you can fill custom errors outside the validation
-         * framework as well while still using internationalized messages.
-         *
-         */
 		if (user.getId() == null && !userService.isUsernameUnique(user.getId(), user.getUsername())){
 			FieldError ssoError = new FieldError("user","username", messageSource.getMessage("non.unique.username", new String[]{user.getUsername()}, Locale.getDefault()));
 			result.addError(ssoError);
@@ -121,13 +136,19 @@ public class UserController {
 		return "redirect:/admin/users/" + user.getId();
 	}
 
+	/**
+	 * Metoda restowa typu GET pobierjaca uzytkownika po ID
+	 * @param id uzytkownika
+	 * @param model obiekt przeplywajacy miedzy frontem, a backendem.
+	 * @param authentication autentykacja
+	 * @return showUser.jsp
+	 */
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public String viewUser(@PathVariable("id") Long id, Model model, Authentication authentication) {
 
 		logger.debug("showUser() id: {}", id);
 
 		User user = new User((User) authentication.getPrincipal());
-//		User user = userService.findOneWithRoles(id);
 		if (user == null) {
 			model.addAttribute("css", "danger");
 			model.addAttribute("msg", "user not found");
@@ -139,6 +160,12 @@ public class UserController {
 
 	}
 
+	/**
+	 * Metoda restowa typu GET usuwajaca uzytownika po iD
+	 * @param id uzytkownika
+	 * @param redirectAttributes atrubyt przekierowania
+	 * @return przekierowanie do /users
+	 */
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
 	public String removeUser(@PathVariable Long id, final RedirectAttributes redirectAttributes) {
 		logger.debug("delete user: {}", id);
